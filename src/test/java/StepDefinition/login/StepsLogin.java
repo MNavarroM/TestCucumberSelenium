@@ -33,9 +33,9 @@ public class StepsLogin {
 		loginPage.visit("https://www.saucedemo.com");
 	}
 	
-	@When("^The user enter the valid credentials$")
-	public void the_user_enter_the_valid_credentials() throws Throwable {
-		loginPage.writeUserAndPassword("standard_user","secret_sauce");
+	@When("^The user enter ([^\"]*) as user and ([^\"]*) as password$")
+	public void the_user_enter_the_user_and_password(String user, String password) throws Throwable {
+		loginPage.writeUserAndPassword(user,password);
 		loginPage.clickLoginButton();
 		System.out.println("b");
 	}
@@ -48,14 +48,14 @@ public class StepsLogin {
 		driver.quit();
 	}
 	
-	@When("^The user enter the incorrect credentials$")
-	public void the_user_enter_the_incorrect_credentials() throws Throwable {
-		System.out.println("1");
-		System.out.println("2");
-		loginPage.writeUserAndPassword("standard_user","se");
-		loginPage.clickLoginButton();
-
-	}
+//	@When("^The user enter the incorrect credentials$")
+//	public void the_user_enter_the_incorrect_credentials() throws Throwable {
+//		System.out.println("1");
+//		System.out.println("2");
+//		loginPage.writeUserAndPassword("standard_user","se");
+//		loginPage.clickLoginButton();
+//
+//	}
 	
 	@Then("^The login page show a error message$")
 	public void the_login_page_show_a_error_message() throws Throwable {
@@ -66,13 +66,13 @@ public class StepsLogin {
 		
 	}
 
-	@When("^The user enter the blocked credentials$")
-	public void the_user_enter_the_blocked_credentials() throws Throwable {
-		loginPage.visit("https://www.saucedemo.com");
-		loginPage.loginError("locked_out_user","secret_sauce");			
-		loginPage.clickLoginButton();
-
-	}
+//	@When("^The user enter the blocked credentials$")
+//	public void the_user_enter_the_blocked_credentials() throws Throwable {
+//		loginPage.visit("https://www.saucedemo.com");
+//		loginPage.loginError("locked_out_user","secret_sauce");			
+//		loginPage.clickLoginButton();
+//
+//	}
 	
 	@Then("^The login page show a error block message$")
 	public void the_login_page_show_a_error_block_message() throws Throwable {
